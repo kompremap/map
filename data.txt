@@ -1,6 +1,6 @@
 Warszawa;https://sklep998844.shoparena.pl/userdata/public/assets//LIST%20REFERENCYJNY%20KOMPRE%20%28Copy%29.jpg;52.20907543536083;21.0097132217739;https://github.com/marekkomp/mapa-dostaw/blob/main/image/LIST%20REFERENCYJNY%20KOMPRE%20(Copy).jpg?raw=true;Referencje
 Wrocław;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje%20Policja%20wroc%C5%82aw%20001.jpg?raw=true;51.10532637641027;17.027916135479852;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje%20Policja%20wroc%C5%82aw%20001.jpg?raw=true;Referencje
-Kraków;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje%20instytut%20ekspertyz%20s%C4%85dowych-1.jpg?raw=true;50.0627944303639;19.945385772468843,https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje%20instytut%20ekspertyz%20s%C4%85dowych-1.jpg?raw=true;Referencje
+Kraków;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje%20instytut%20ekspertyz%20s%C4%85dowych-1.jpg?raw=true;50.0627944303639;19.945385772468843;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje%20instytut%20ekspertyz%20s%C4%85dowych-1.jpg?raw=true;Referencje
 Gdańsk;https://goo.gl/maps/example4;54.3521;18.6466;;OSP
 Gdańsk;https://goo.gl/maps/example4;54.3521;18.6566;;OSP
 Nowa Lokalizacja;;51.415458062256775;17.927401894092906;;Referencje
