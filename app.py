@@ -33,16 +33,20 @@ def load_data():
 # Wczytaj dane z pliku
 data = load_data()
 
-# Dynamiczny tytuł
-st.title("Dziękujemy za zaufanie")
+# Wspólny tytuł
+st.title("Razem możemy więcej")
 
-# Wybór kategorii pod tytułem
+# Filtry kategorii
 categories = list(set(entry["category"] for entry in data))
 selected_category = st.selectbox("Wybierz kategorię", ["Wszystkie"] + categories)
 
-# Wyświetlenie dynamicznego podtytułu na podstawie wybranego filtra
+# Indywidualne podtytuły dla każdej kategorii
 if selected_category == "Wszystkie":
-    st.subheader("Wszystkie lokalizacje")
+    st.subheader("Wszystkie lokalizacje: Zobacz pełną mapę dostaw")
+elif selected_category == "OSP":
+    st.subheader("Lokalizacje OSP: Miejsca wsparcia dla lokalnych jednostek")
+elif selected_category == "Przetargi":
+    st.subheader("Lokalizacje Przetargów: Gdzie realizujemy projekty")
 else:
     st.subheader(f"Lokalizacje: {selected_category}")
 
