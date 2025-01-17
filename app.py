@@ -35,7 +35,7 @@ data = load_data()
 st.image("https://github.com/marekkomp/mapa-dostaw/blob/main/image/Bez%20nazwy.png?raw=true", width=448)  # Zmień "200" na pożądaną szerokość w pikselach
 
 # Wspólny tytuł
-st.title("Kompre dziękuje za zaufanie")
+st.title("Dziękujemy za zaufanie")
 
 # Filtry kategorii
 categories = list(set(entry["category"] for entry in data))
@@ -44,8 +44,8 @@ selected_category = st.selectbox("Wybierz kategorię", ["Wszystkie"] + categorie
 # Dynamiczny podtytuł dla każdej kategorii
 if selected_category == "Wszystkie":
     st.subheader("W 2025 nasza mapa będzie pełna znaczników!")
-elif selected_category == "OSP":
-    st.subheader("Darowizny dla OSP #KompreDlaOSP #LokalniBohaterowie")
+elif selected_category == "Darowizny":
+    st.subheader("Darowizny #KompreDlaOSP #LokalniBohaterowie")
 elif selected_category == "Referencje":
     st.subheader("Oto kilka przykładów zakończonych przetargów.")
 else:
