@@ -1,3 +1,2 @@
 Warszawa;https://goo.gl/maps/xyz123;52.2297;21.0122;50
 Kraków;https://goo.gl/maps/abc456;50.0647;19.945;30
-
