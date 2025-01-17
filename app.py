@@ -12,15 +12,14 @@ def load_data():
         with open(DATA_FILE, "r") as file:
             for line in file:
                 try:
-                    # Wczytanie danych z podziałem na pola
                     location, url, latitude, longitude, *image_url_category = line.strip().split(";")
                     image_url = image_url_category[0] if len(image_url_category) > 0 else None
                     category = image_url_category[1] if len(image_url_category) > 1 else None
                     data.append({
                         "location": location,
-                        "url": url if url else None,  # Obsługuje brak URL
+                        "url": url if url else None,
                         "coordinates": [float(latitude), float(longitude)],
-                        "image_url": image_url if image_url else None,  # Obsługuje brak zdjęcia
+                        "image_url": image_url if image_url else None,
                         "category": category if category else "Nieokreślona"
                     })
                 except ValueError:
@@ -33,7 +32,7 @@ def load_data():
 data = load_data()
 
 # Dodanie logo firmy na górze strony
-st.image("https://github.com/marekkomp/mapa-dostaw/blob/main/image/Bez%20nazwy.png?raw=true", use_container_width=True)  # Zamień "logo.png" na ścieżkę do Twojego pliku z logo
+st.image("https://github.com/marekkomp/mapa-dostaw/blob/main/image/Bez%20nazwy.png?raw=true", width=448)  # Zmień "200" na pożądaną szerokość w pikselach
 
 # Wspólny tytuł
 st.title("Kompre dziękuje za zaufanie")
@@ -64,14 +63,11 @@ m = folium.Map(location=[52.0, 19.0], zoom_start=6)
 # Dodanie znaczników na mapie
 for entry in filtered_data:
     try:
-        # Tworzenie treści popupu
         popup_text = f"<b>{entry['location']}</b>"
         if entry['url']:
             popup_text += f"<br><a href='{entry['url']}' target='_blank'>Zobacz szczegóły</a>"
-        if entry['image_url'] and entry['image_url'].strip():  # Sprawdzanie, czy image_url nie jest pusty
+        if entry['image_url'] and entry['image_url'].strip():
             popup_text += f"<br><img src='{entry['image_url']}' width='200px'/>"
-        
-        # Dodanie znacznika na mapie
         folium.Marker(
             location=entry["coordinates"],
             popup=folium.Popup(popup_text, max_width=300),
