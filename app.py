@@ -13,12 +13,13 @@ def load_data():
         with open(DATA_FILE, "r") as file:
             for line in file:
                 try:
-                    location, url, latitude, longitude, laptops = line.strip().split(";")
+                    location, url, latitude, longitude, laptops, image_url = line.strip().split(";")
                     data.append({
                         "location": location,
                         "url": url if url else None,  # Obsługuje puste URL
                         "coordinates": [float(latitude), float(longitude)],
                         "laptops": int(laptops),
+                        "image_url": image_url if image_url else None,  # Obsługuje brak zdjęcia
                     })
                 except ValueError:
                     st.error(f"Błędny format danych w pliku: {line.strip()}")
@@ -40,9 +41,11 @@ m = folium.Map(location=[52.0, 19.0], zoom_start=6)
 
 # Dodanie znaczników na mapie
 for entry in data:
-    popup_text = f"{entry['location']}: {entry['laptops']} laptopów"
+    popup_text = f"<b>{entry['location']}</b>: {entry['laptops']} laptopów"
     if entry['url']:
         popup_text += f"<br><a href='{entry['url']}' target='_blank'>Zobacz szczegóły</a>"
+    if entry['image_url']:
+        popup_text += f"<br><img src='{entry['image_url']}' width='200px'/>"
     
     folium.Marker(
         location=entry["coordinates"],
