@@ -12,10 +12,11 @@ def load_data():
         with open(DATA_FILE, "r") as file:
             for line in file:
                 try:
+                    # Wczytanie danych z podziałem na pola
                     location, url, latitude, longitude, laptops, *image_url = line.strip().split(";")
                     data.append({
                         "location": location,
-                        "url": url if url else None,  # Obsługuje puste URL
+                        "url": url if url else None,  # Obsługuje brak URL
                         "coordinates": [float(latitude), float(longitude)],
                         "laptops": int(laptops),
                         "image_url": image_url[0] if image_url else None  # Obsługuje brak zdjęcia
@@ -44,12 +45,14 @@ m = folium.Map(location=[52.0, 19.0], zoom_start=6)
 # Dodanie znaczników na mapie
 for entry in data:
     try:
+        # Tworzenie treści popupu
         popup_text = f"<b>{entry['location']}</b>: {entry['laptops']} laptopów"
         if entry['url']:
             popup_text += f"<br><a href='{entry['url']}' target='_blank'>Zobacz szczegóły</a>"
-        if entry['image_url']:
+        if entry['image_url'] and entry['image_url'].strip():  # Sprawdzanie, czy image_url nie jest pusty
             popup_text += f"<br><img src='{entry['image_url']}' width='200px'/>"
         
+        # Dodanie znacznika na mapie
         folium.Marker(
             location=entry["coordinates"],
             popup=folium.Popup(popup_text, max_width=300),
@@ -65,3 +68,10 @@ st_folium(m, width=700, height=500)
 st.subheader("Statystyki")
 total_laptops = sum(entry["laptops"] for entry in data)
 st.write(f"Łączna liczba dostarczonych laptopów: {total_laptops}")
+
+# Informacje o brakujących danych
+for entry in data:
+    if not entry['image_url']:
+        st.warning(f"Lokalizacja {entry['location']} nie ma przypisanego obrazu.")
+    if not entry['url']:
+        st.warning(f"Lokalizacja {entry['location']} nie ma przypisanego URL.")
