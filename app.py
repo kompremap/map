@@ -11,17 +11,24 @@ data = [
     {"location": "Kraków", "coordinates": [50.0647, 19.945], "laptops": 30},
 ]
 
-# Formularz dodawania lokalizacji
-st.sidebar.header("Dodaj nową lokalizację")
-location = st.sidebar.text_input("Miejscowość")
-latitude = st.sidebar.number_input("Szerokość geograficzna", value=52.0, format="%.6f")
-longitude = st.sidebar.number_input("Długość geograficzna", value=19.0, format="%.6f")
-laptops = st.sidebar.number_input("Liczba laptopów", min_value=0, step=1)
+# Formularz autoryzacji administratora
+st.sidebar.header("Panel administratora")
+password = st.sidebar.text_input("Hasło administratora", type="password")
+if password == "admin123":  # Ustaw swoje hasło
+    st.sidebar.success("Zalogowano jako administrator!")
 
-if st.sidebar.button("Dodaj lokalizację"):
-    new_entry = {"location": location, "coordinates": [latitude, longitude], "laptops": laptops}
-    data.append(new_entry)
-    st.success(f"Dodano lokalizację: {location}")
+    # Formularz dodawania lokalizacji
+    location = st.sidebar.text_input("Miejscowość")
+    latitude = st.sidebar.number_input("Szerokość geograficzna", value=52.0, format="%.6f")
+    longitude = st.sidebar.number_input("Długość geograficzna", value=19.0, format="%.6f")
+    laptops = st.sidebar.number_input("Liczba laptopów", min_value=0, step=1)
+
+    if st.sidebar.button("Dodaj lokalizację"):
+        new_entry = {"location": location, "coordinates": [latitude, longitude], "laptops": laptops}
+        data.append(new_entry)
+        st.success(f"Dodano lokalizację: {location}")
+else:
+    st.sidebar.warning("Wprowadź poprawne hasło, aby dodać lokalizacje.")
 
 # Tworzenie mapy
 m = folium.Map(location=[52.0, 19.0], zoom_start=6)
