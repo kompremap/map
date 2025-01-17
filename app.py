@@ -34,7 +34,7 @@ def load_data():
 data = load_data()
 
 # Wspólny tytuł
-st.title("Razem możemy więcej")
+st.title("Dziękujemy za zaufanie")
 
 # Filtry kategorii
 categories = list(set(entry["category"] for entry in data))
