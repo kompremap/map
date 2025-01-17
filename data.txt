@@ -2,5 +2,5 @@ Warszawa;https://www.facebook.com/komprepl/;52.2297;21.0122;50
 Kraków;https://goo.gl/maps/example2;50.0647;19.945;30
 Łódź;https://goo.gl/maps/example3;51.7592;19.4560;20
 Gdańsk;https://goo.gl/maps/example4;54.3521;18.6466;15
-Ostrzeszów;https://www.facebook.com/komprepl/;51.415458062256775;17.927401894092906;20
+Ostrzeszów;https://www.facebook.com/komprepl/;51.415458062256775;17.927401894092906;20;https://scontent.fktw5-1.fna.fbcdn.net/v/t39.30808-6/472943876_1029989849166064_8855568494159829281_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=N-bHmGdd1-0Q7kNvgFk1Cec&_nc_zt=23&_nc_ht=scontent.fktw5-1.fna&_nc_gid=AAfMTPEmxawazoA7qZuLABd&oh=00_AYAtqu5rTVLUVuk3DRRhuz6pHYuj6uJEvIKmZr87GIY3qQ&oe=678FEB67
 Nowa Lokalizacja;;51.415458062256775;17.927401894092906;20
