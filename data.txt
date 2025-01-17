@@ -1,2 +1,8 @@
 Warszawa;https://goo.gl/maps/xyz123;52.2297;21.0122;50
 Kraków;https://goo.gl/maps/abc456;50.0647;19.945;30
+
+# Ta linia zostanie zignorowana:
+Gdańsk;https://goo.gl/maps/def789;54.3521;
+
+# Poprawny wpis:
+Łódź;https://goo.gl/maps/ghi789;51.7592;19.4560;25
