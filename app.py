@@ -45,7 +45,7 @@ for entry in data:
         popup=folium.Popup(
             f"<b>{entry['location']}</b><br>"
             f"Liczba laptopów: {entry['laptops']}<br>"
-            f"<a href='{entry['link']}' target='_blank'>Link do Google Maps</a>",
+            f"<a href='{entry['link']}' target='_blank'>Więcej informacji</a>",
             max_width=250,
         ),
         icon=folium.Icon(color="blue", icon="info-sign")
