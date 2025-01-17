@@ -2,5 +2,5 @@ Warszawa;https://sklep998844.shoparena.pl/userdata/public/assets//LIST%20REFEREN
 Wrocław;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje%20Policja%20wroc%C5%82aw%20001.jpg?raw=true;51.10532637641027;17.027916135479852;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje%20Policja%20wroc%C5%82aw%20001.jpg?raw=true;Referencje
 Kraków;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje%20instytut%20ekspertyz%20s%C4%85dowych-1.jpg?raw=true;50.0627944303639;19.945385772468843;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje%20instytut%20ekspertyz%20s%C4%85dowych-1.jpg?raw=true;Referencje
 Słupsk;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje_Kompre%20S%C5%81UPSK-1.jpg?raw=true;54.45171364883212;17.060837842743716;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje_Kompre%20S%C5%81UPSK-1.jpg?raw=true;Referencje
-Gdańsk;https://goo.gl/maps/example4;54.3521;18.6566;;OSP
+Poznań;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje%20szpital%20pozna%C5%84-1.jpg?raw=true;52.404682772475525;16.88714814656291;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje%20szpital%20pozna%C5%84-1.jpg?raw=true;Referencje
 Nowa Lokalizacja;;51.415458062256775;17.927401894092906;;Referencje
