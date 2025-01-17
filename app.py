@@ -13,14 +13,13 @@ def load_data():
             for line in file:
                 try:
                     # Wczytanie danych z podziałem na pola
-                    location, url, latitude, longitude, laptops, *image_url_category = line.strip().split(";")
+                    location, url, latitude, longitude, *image_url_category = line.strip().split(";")
                     image_url = image_url_category[0] if len(image_url_category) > 0 else None
                     category = image_url_category[1] if len(image_url_category) > 1 else None
                     data.append({
                         "location": location,
                         "url": url if url else None,  # Obsługuje brak URL
                         "coordinates": [float(latitude), float(longitude)],
-                        "laptops": int(laptops),
                         "image_url": image_url if image_url else None,  # Obsługuje brak zdjęcia
                         "category": category if category else "Nieokreślona"
                     })
@@ -34,19 +33,19 @@ def load_data():
 data = load_data()
 
 # Wspólny tytuł
-st.title("Dziękujemy za zaufanie")
+st.title("Razem możemy więcej")
 
 # Filtry kategorii
 categories = list(set(entry["category"] for entry in data))
 selected_category = st.selectbox("Wybierz kategorię", ["Wszystkie"] + categories)
 
-# Indywidualne podtytuły dla każdej kategorii
+# Dynamiczny podtytuł dla każdej kategorii
 if selected_category == "Wszystkie":
-    st.subheader("Naszą misją jest zapełnienie całej mapy")
+    st.subheader("Wszystkie lokalizacje: Zobacz pełną mapę dostaw")
 elif selected_category == "OSP":
-    st.subheader("Miejsca wsparcia dla lokalnych jednostek #KompreDlaOSP #LokalniBohaterowie")
-elif selected_category == "Przetargi":
-    st.subheader("Sprawdź nasze referencje")
+    st.subheader("Lokalizacje OSP: Miejsca wsparcia dla lokalnych jednostek")
+elif selected_category == "Referencje":
+    st.subheader("Lokalizacje Referencji: Gdzie mamy doświadczenie")
 else:
     st.subheader(f"Lokalizacje: {selected_category}")
 
@@ -63,7 +62,7 @@ m = folium.Map(location=[52.0, 19.0], zoom_start=6)
 for entry in filtered_data:
     try:
         # Tworzenie treści popupu
-        popup_text = f"<b>{entry['location']}</b>: {entry['laptops']} laptopów"
+        popup_text = f"<b>{entry['location']}</b>"
         if entry['url']:
             popup_text += f"<br><a href='{entry['url']}' target='_blank'>Zobacz szczegóły</a>"
         if entry['image_url'] and entry['image_url'].strip():  # Sprawdzanie, czy image_url nie jest pusty
@@ -80,8 +79,3 @@ for entry in filtered_data:
 
 # Wyświetlenie mapy
 st_folium(m, width=700, height=500)
-
-# Statystyki
-st.subheader("Statystyki")
-total_laptops = sum(entry["laptops"] for entry in filtered_data)
-st.write(f"Łączna liczba dostarczonych laptopów: {total_laptops}")
