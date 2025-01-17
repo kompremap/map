@@ -1,6 +1,6 @@
 Warszawa;https://sklep998844.shoparena.pl/userdata/public/assets//LIST%20REFERENCYJNY%20KOMPRE%20%28Copy%29.jpg;52.20907543536083;21.0097132217739;50;https://github.com/marekkomp/mapa-dostaw/blob/main/image/LIST%20REFERENCYJNY%20KOMPRE%20(Copy).jpg?raw=true;Referencje
-Kraków;https://goo.gl/maps/example2;50.0647;19.945;30;;Referencje
-Łódź;https://goo.gl/maps/example3;51.7592;19.4560;20;https://github.com/marekkomp/mapa-dostaw/blob/main/image/1.png?raw=true;Referencje
-Gdańsk;https://goo.gl/maps/example4;54.3521;18.6466;15;;OSP
-Gdańsk;https://goo.gl/maps/example4;54.3521;18.6566;18;;OSP
-Nowa Lokalizacja;;51.415458062256775;17.927401894092906;120;;Referencje
+Kraków;https://goo.gl/maps/example2;50.0647;19.945;;Referencje
+Łódź;https://goo.gl/maps/example3;51.7592;19.4560;https://github.com/marekkomp/mapa-dostaw/blob/main/image/1.png?raw=true;Referencje
+Gdańsk;https://goo.gl/maps/example4;54.3521;18.6466;;OSP
+Gdańsk;https://goo.gl/maps/example4;54.3521;18.6566;;OSP
+Nowa Lokalizacja;;51.415458062256775;17.927401894092906;;Referencje
