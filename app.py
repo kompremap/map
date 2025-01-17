@@ -30,7 +30,10 @@ def load_data():
 data = load_data()
 
 # Nagłówek strony
-st.title("#KompreDlaOSP")
+st.title("Razem możemy więcej")
+
+# Podtytuł
+st.subheader("#Kompre #WsparcieDlaOSP #RazemSilniejsi #KompreDlaOSP #PomagamyRazem #LokalniBohaterowie #WsparcieLokalne")
 
 # Tworzenie mapy
 m = folium.Map(location=[52.0, 19.0], zoom_start=6)
