@@ -45,7 +45,7 @@ if selected_category == "Wszystkie":
 elif selected_category == "OSP":
     st.subheader("Darowizny dla OSP #KompreDlaOSP #LokalniBohaterowie")
 elif selected_category == "Referencje":
-    st.subheader("Kilka przykładowych referencji")
+    st.subheader("To tylko kilka zrealizowanych przetargów")
 else:
     st.subheader(f"Lokalizacje: {selected_category}")
 
