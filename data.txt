@@ -8,4 +8,3 @@ Koszalin;https://github.com/marekkomp/mapa-dostaw/blob/main/image/Referencje-%20
 OSP w Grabowie nad Prosną;https://www.facebook.com/komprepl/posts/pfbid0KoCFLjqupiZ7awTG4y12D4XFGPYMscaapGENSfyMtw2ncHczXquiyhRzY9i6WKrel;51.507999169669084;18.11479548046756;https://github.com/marekkomp/mapa-dostaw/blob/main/image/452520611_888391993332237_3368663249156573131_n.jpg?raw=true;OSP
 OSP KSRG Nurzec-Stacja;https://www.facebook.com/komprepl/posts/pfbid02nrsSvTkTrExqmvfuGiZsynyj6orXTgWvMpLRr3oKGGqCL24VtBSTSQX5MBbU6BjAl;52.45734568834252;23.093939555738057;https://github.com/marekkomp/mapa-dostaw/blob/main/image/454297963_8320873887962372_1072442420836515002_n.jpg?raw=true;OSP
 OSP Siemichocze;https://www.facebook.com/siemichoczeosp/posts/pfbid0SKwCubGKQhYxzSuPHsrH7QqTYip5czEtASn3F1LQvVrnL2E5qZERSoH8cUjvwTLTl;52.42984147766866;23.193667089889257;https://github.com/marekkomp/mapa-dostaw/blob/main/image/454900264_8320873917962369_6729045082368662801_n.jpg?raw=true;OSP
-
