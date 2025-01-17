@@ -30,9 +30,6 @@ def load_data():
 # Wczytaj dane z pliku
 data = load_data()
 
-# Debug: Wyświetlanie wczytanych danych
-st.write("Wczytane dane:", data)
-
 # Nagłówek strony
 st.title("Razem możemy więcej")
 
@@ -68,10 +65,3 @@ st_folium(m, width=700, height=500)
 st.subheader("Statystyki")
 total_laptops = sum(entry["laptops"] for entry in data)
 st.write(f"Łączna liczba dostarczonych laptopów: {total_laptops}")
-
-# Informacje o brakujących danych
-for entry in data:
-    if not entry['image_url']:
-        st.warning(f"Lokalizacja {entry['location']} nie ma przypisanego obrazu.")
-    if not entry['url']:
-        st.warning(f"Lokalizacja {entry['location']} nie ma przypisanego URL.")
