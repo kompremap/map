@@ -1,6 +1,8 @@
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
+from geopy.geocoders import Nominatim
+import os
 
 # Plik do przechowywania danych
 DATA_FILE = "data.txt"
@@ -11,43 +13,79 @@ def load_data():
     try:
         with open(DATA_FILE, "r") as file:
             for line in file:
-                parts = line.strip().split(";")
-                if len(parts) != 5:
-                    st.error(f"Błędny format danych w pliku: {line.strip()}")
-                    continue
-                location, link, latitude, longitude, laptops = parts
                 try:
+                    location, url, latitude, longitude, laptops = line.strip().split(";")
                     data.append({
                         "location": location,
-                        "link": link,
+                        "url": url if url else None,  # Obsługuje puste URL
                         "coordinates": [float(latitude), float(longitude)],
                         "laptops": int(laptops),
                     })
                 except ValueError:
-                    st.error(f"Błędne dane liczbowe w linii: {line.strip()}")
+                    st.error(f"Błędny format danych w pliku: {line.strip()}")
     except FileNotFoundError:
-        st.error("Plik data.txt nie został znaleziony!")
+        st.warning("Plik data.txt nie istnieje. Zostanie utworzony przy pierwszym zapisie.")
     return data
+
+# Funkcja do zapisywania danych do pliku
+def save_data(data):
+    with open(DATA_FILE, "w") as file:
+        for entry in data:
+            file.write(f"{entry['location']};{entry['url'] or ''};{entry['coordinates'][0]};{entry['coordinates'][1]};{entry['laptops']}\n")
 
 # Wczytaj dane
 data = load_data()
 
+# Geolokator (Nominatim - OpenStreetMap)
+geolocator = Nominatim(user_agent="mapa_dostaw")
+
 # Nagłówek strony
-st.title("Mapa dostaw laptopów do OSP")
+st.title("Mapa dostaw laptopów do OSB")
+
+# Panel administratora
+st.sidebar.header("Panel administratora")
+password = st.sidebar.text_input("Hasło administratora", type="password")
+if password == "admin123":  # Ustaw swoje hasło
+    st.sidebar.success("Zalogowano jako administrator!")
+
+    # Formularz dodawania lokalizacji
+    location = st.sidebar.text_input("Miejscowość")
+    url = st.sidebar.text_input("Link (opcjonalny, np. do mapy lub strony)")
+    laptops = st.sidebar.number_input("Liczba laptopów", min_value=0, step=1)
+
+    if st.sidebar.button("Dodaj lokalizację"):
+        try:
+            # Pobieranie współrzędnych na podstawie nazwy miejscowości
+            loc = geolocator.geocode(location)
+            if loc:
+                new_entry = {
+                    "location": location,
+                    "url": url,
+                    "coordinates": [loc.latitude, loc.longitude],
+                    "laptops": laptops,
+                }
+                data.append(new_entry)
+                save_data(data)  # Zapisz dane do pliku
+                st.success(f"Dodano lokalizację: {location} ({loc.latitude}, {loc.longitude})")
+            else:
+                st.error("Nie znaleziono współrzędnych dla podanej miejscowości.")
+        except Exception as e:
+            st.error(f"Wystąpił błąd podczas geokodowania: {e}")
+else:
+    st.sidebar.warning("Wprowadź poprawne hasło, aby dodać lokalizacje.")
 
 # Tworzenie mapy
 m = folium.Map(location=[52.0, 19.0], zoom_start=6)
 
 # Dodanie znaczników na mapie
 for entry in data:
+    popup_text = f"{entry['location']}: {entry['laptops']} laptopów"
+    if entry['url']:
+        popup_text += f"<br><a href='{entry['url']}' target='_blank'>Zobacz szczegóły</a>"
+    
     folium.Marker(
         location=entry["coordinates"],
-        popup=folium.Popup(
-            f"<b>{entry['location']}</b><br>"
-            f"Liczba laptopów: {entry['laptops']}<br>"
-            f"<a href='{entry['link']}' target='_blank'>Więcej informacji</a>",
-            max_width=250,
-        ),
+        popup=folium.Popup(popup_text, max_width=300),
         icon=folium.Icon(color="blue", icon="info-sign")
     ).add_to(m)
 
