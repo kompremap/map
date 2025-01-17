@@ -42,11 +42,11 @@ selected_category = st.selectbox("Wybierz kategorię", ["Wszystkie"] + categorie
 
 # Indywidualne podtytuły dla każdej kategorii
 if selected_category == "Wszystkie":
-    st.subheader("Wszystkie lokalizacje: Zobacz pełną mapę dostaw")
+    st.subheader("Naszą misją jest zapełnienie całej mapy")
 elif selected_category == "OSP":
-    st.subheader("Lokalizacje OSP: Miejsca wsparcia dla lokalnych jednostek")
+    st.subheader("Miejsca wsparcia dla lokalnych jednostek #KompreDlaOSP #LokalniBohaterowie")
 elif selected_category == "Przetargi":
-    st.subheader("Lokalizacje Przetargów: Gdzie realizujemy projekty")
+    st.subheader("Sprawdź nasze referencje")
 else:
     st.subheader(f"Lokalizacje: {selected_category}")
 
