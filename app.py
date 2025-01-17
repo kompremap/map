@@ -30,7 +30,7 @@ def load_data():
 data = load_data()
 
 # Nagłówek strony
-st.title("Mapa dostaw laptopów do OSB")
+st.title("#KompreDlaOSP")
 
 # Tworzenie mapy
 m = folium.Map(location=[52.0, 19.0], zoom_start=6)
