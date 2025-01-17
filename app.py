@@ -41,7 +41,7 @@ selected_category = st.selectbox("Wybierz kategorię", ["Wszystkie"] + categorie
 
 # Dynamiczny podtytuł dla każdej kategorii
 if selected_category == "Wszystkie":
-    st.subheader("W 2025 zamierzamy oznaczyć każdy punkt na mapie!")
+    st.subheader("W 2025 zamierzamy oznaczyć każdy punkt na mapie! ")
 elif selected_category == "OSP":
     st.subheader("Darowizny dla OSP #KompreDlaOSP #LokalniBohaterowie")
 elif selected_category == "Referencje":
