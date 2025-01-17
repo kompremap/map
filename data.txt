@@ -1,5 +1,5 @@
 Warszawa;https://www.facebook.com/komprepl/;52.2297;21.0122;50;;OSP
-Kraków;https://goo.gl/maps/example2;50.0647;19.945;30;;Przetargi
-Łódź;https://goo.gl/maps/example3;51.7592;19.4560;20;https://github.com/marekkomp/mapa-dostaw/blob/main/image/1.png?raw=true;OSP
+Kraków;https://goo.gl/maps/example2;50.0647;19.945;30;;Referencje
+Łódź;https://goo.gl/maps/example3;51.7592;19.4560;20;https://github.com/marekkomp/mapa-dostaw/blob/main/image/1.png?raw=true;Referencje
 Gdańsk;https://goo.gl/maps/example4;54.3521;18.6466;15;;OSP
-Nowa Lokalizacja;;51.415458062256775;17.927401894092906;20;;Przetargi
+Nowa Lokalizacja;;51.415458062256775;17.927401894092906;20;;Referencje
