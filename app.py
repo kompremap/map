@@ -3,17 +3,39 @@ import folium
 from streamlit_folium import st_folium
 from geopy.geocoders import Nominatim
 
-# Nagłówek strony
-st.title("Mapa dostaw laptopów do OSB")
+# Plik do przechowywania danych
+DATA_FILE = "data.txt"
 
-# Przykładowe dane
-data = [
-    {"location": "Warszawa", "coordinates": [52.2297, 21.0122], "laptops": 50},
-    {"location": "Kraków", "coordinates": [50.0647, 19.945], "laptops": 30},
-]
+# Funkcja do ładowania danych z pliku
+def load_data():
+    data = []
+    try:
+        with open(DATA_FILE, "r") as file:
+            for line in file:
+                location, latitude, longitude, laptops = line.strip().split(";")
+                data.append({
+                    "location": location,
+                    "coordinates": [float(latitude), float(longitude)],
+                    "laptops": int(laptops),
+                })
+    except FileNotFoundError:
+        pass
+    return data
+
+# Funkcja do zapisywania danych do pliku
+def save_data(data):
+    with open(DATA_FILE, "w") as file:
+        for entry in data:
+            file.write(f"{entry['location']};{entry['coordinates'][0]};{entry['coordinates'][1]};{entry['laptops']}\n")
+
+# Wczytaj dane
+data = load_data()
 
 # Geolokator (Nominatim - OpenStreetMap)
 geolocator = Nominatim(user_agent="mapa_dostaw")
+
+# Nagłówek strony
+st.title("Mapa dostaw laptopów do OSB")
 
 # Panel administratora
 st.sidebar.header("Panel administratora")
@@ -36,6 +58,7 @@ if password == "admin123":  # Ustaw swoje hasło
                     "laptops": laptops,
                 }
                 data.append(new_entry)
+                save_data(data)  # Zapisz dane do pliku
                 st.success(f"Dodano lokalizację: {location} ({loc.latitude}, {loc.longitude})")
             else:
                 st.error("Nie znaleziono współrzędnych dla podanej miejscowości.")
