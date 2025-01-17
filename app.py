@@ -42,37 +42,30 @@ geolocator = Nominatim(user_agent="mapa_dostaw")
 # Nagłówek strony
 st.title("Mapa dostaw laptopów do OSB")
 
-# Panel administratora
-st.sidebar.header("Panel administratora")
-password = st.sidebar.text_input("Hasło administratora", type="password")
-if password == "admin123":  # Ustaw swoje hasło
-    st.sidebar.success("Zalogowano jako administrator!")
+# Formularz dodawania lokalizacji
+st.header("Dodaj nową lokalizację")
+location = st.text_input("Miejscowość")
+url = st.text_input("Link (opcjonalny, np. do mapy lub strony)")
+laptops = st.number_input("Liczba laptopów", min_value=0, step=1)
 
-    # Formularz dodawania lokalizacji
-    location = st.sidebar.text_input("Miejscowość")
-    url = st.sidebar.text_input("Link (opcjonalny, np. do mapy lub strony)")
-    laptops = st.sidebar.number_input("Liczba laptopów", min_value=0, step=1)
-
-    if st.sidebar.button("Dodaj lokalizację"):
-        try:
-            # Pobieranie współrzędnych na podstawie nazwy miejscowości
-            loc = geolocator.geocode(location)
-            if loc:
-                new_entry = {
-                    "location": location,
-                    "url": url,
-                    "coordinates": [loc.latitude, loc.longitude],
-                    "laptops": laptops,
-                }
-                data.append(new_entry)
-                save_data(data)  # Zapisz dane do pliku
-                st.success(f"Dodano lokalizację: {location} ({loc.latitude}, {loc.longitude})")
-            else:
-                st.error("Nie znaleziono współrzędnych dla podanej miejscowości.")
-        except Exception as e:
-            st.error(f"Wystąpił błąd podczas geokodowania: {e}")
-else:
-    st.sidebar.warning("Wprowadź poprawne hasło, aby dodać lokalizacje.")
+if st.button("Dodaj lokalizację"):
+    try:
+        # Pobieranie współrzędnych na podstawie nazwy miejscowości
+        loc = geolocator.geocode(location)
+        if loc:
+            new_entry = {
+                "location": location,
+                "url": url,
+                "coordinates": [loc.latitude, loc.longitude],
+                "laptops": laptops,
+            }
+            data.append(new_entry)
+            save_data(data)  # Zapisz dane do pliku
+            st.success(f"Dodano lokalizację: {location} ({loc.latitude}, {loc.longitude})")
+        else:
+            st.error("Nie znaleziono współrzędnych dla podanej miejscowości.")
+    except Exception as e:
+        st.error(f"Wystąpił błąd podczas geokodowania: {e}")
 
 # Tworzenie mapy
 m = folium.Map(location=[52.0, 19.0], zoom_start=6)
