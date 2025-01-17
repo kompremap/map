@@ -33,7 +33,7 @@ def load_data():
 data = load_data()
 
 # Wspólny tytuł
-st.title("Razem możemy więcej")
+st.title("Kompre dziękuje za zaufanie")
 
 # Filtry kategorii
 categories = list(set(entry["category"] for entry in data))
@@ -45,7 +45,7 @@ if selected_category == "Wszystkie":
 elif selected_category == "OSP":
     st.subheader("Lokalizacje OSP: Miejsca wsparcia dla lokalnych jednostek")
 elif selected_category == "Referencje":
-    st.subheader("Lokalizacje Referencji: Gdzie mamy doświadczenie")
+    st.subheader("To tylko Kilka przykładowych referencji")
 else:
     st.subheader(f"Lokalizacje: {selected_category}")
 
