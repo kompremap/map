@@ -43,9 +43,9 @@ selected_category = st.selectbox("Wybierz kategorię", ["Wszystkie"] + categorie
 if selected_category == "Wszystkie":
     st.subheader("Wszystkie lokalizacje: Zobacz pełną mapę dostaw")
 elif selected_category == "OSP":
-    st.subheader("Lokalizacje OSP: Miejsca wsparcia dla lokalnych jednostek")
+    st.subheader("Darowizny dla OSP #KompreDlaOSP #LokalniBohaterowie")
 elif selected_category == "Referencje":
-    st.subheader("To tylko Kilka przykładowych referencji")
+    st.subheader("Kilka przykładowych referencji")
 else:
     st.subheader(f"Lokalizacje: {selected_category}")
 
