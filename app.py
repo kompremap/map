@@ -1,7 +1,6 @@
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
-from geopy.geocoders import Nominatim
 
 # Plik do przechowywania danych
 DATA_FILE = "data.txt"
@@ -12,60 +11,22 @@ def load_data():
     try:
         with open(DATA_FILE, "r") as file:
             for line in file:
-                location, latitude, longitude, laptops = line.strip().split(";")
+                location, link, latitude, longitude, laptops = line.strip().split(";")
                 data.append({
                     "location": location,
+                    "link": link,
                     "coordinates": [float(latitude), float(longitude)],
                     "laptops": int(laptops),
                 })
     except FileNotFoundError:
-        pass
+        st.error("Plik data.txt nie został znaleziony!")
     return data
-
-# Funkcja do zapisywania danych do pliku
-def save_data(data):
-    with open(DATA_FILE, "w") as file:
-        for entry in data:
-            file.write(f"{entry['location']};{entry['coordinates'][0]};{entry['coordinates'][1]};{entry['laptops']}\n")
 
 # Wczytaj dane
 data = load_data()
 
-# Geolokator (Nominatim - OpenStreetMap)
-geolocator = Nominatim(user_agent="mapa_dostaw")
-
 # Nagłówek strony
-st.title("Mapa dostaw laptopów do OSB")
-
-# Panel administratora
-st.sidebar.header("Panel administratora")
-password = st.sidebar.text_input("Hasło administratora", type="password")
-if password == "admin123":  # Ustaw swoje hasło
-    st.sidebar.success("Zalogowano jako administrator!")
-
-    # Formularz dodawania lokalizacji
-    location = st.sidebar.text_input("Miejscowość")
-    laptops = st.sidebar.number_input("Liczba laptopów", min_value=0, step=1)
-
-    if st.sidebar.button("Dodaj lokalizację"):
-        try:
-            # Pobieranie współrzędnych na podstawie nazwy miejscowości
-            loc = geolocator.geocode(location)
-            if loc:
-                new_entry = {
-                    "location": location,
-                    "coordinates": [loc.latitude, loc.longitude],
-                    "laptops": laptops,
-                }
-                data.append(new_entry)
-                save_data(data)  # Zapisz dane do pliku
-                st.success(f"Dodano lokalizację: {location} ({loc.latitude}, {loc.longitude})")
-            else:
-                st.error("Nie znaleziono współrzędnych dla podanej miejscowości.")
-        except Exception as e:
-            st.error(f"Wystąpił błąd podczas geokodowania: {e}")
-else:
-    st.sidebar.warning("Wprowadź poprawne hasło, aby dodać lokalizacje.")
+st.title("Mapa dostaw laptopów do OSP")
 
 # Tworzenie mapy
 m = folium.Map(location=[52.0, 19.0], zoom_start=6)
@@ -74,7 +35,12 @@ m = folium.Map(location=[52.0, 19.0], zoom_start=6)
 for entry in data:
     folium.Marker(
         location=entry["coordinates"],
-        popup=f"{entry['location']}: {entry['laptops']} laptopów",
+        popup=folium.Popup(
+            f"<b>{entry['location']}</b><br>"
+            f"Liczba laptopów: {entry['laptops']}<br>"
+            f"<a href='{entry['link']}' target='_blank'>Link do Google Maps</a>",
+            max_width=250,
+        ),
         icon=folium.Icon(color="blue", icon="info-sign")
     ).add_to(m)
 
