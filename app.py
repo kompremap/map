@@ -11,13 +11,20 @@ def load_data():
     try:
         with open(DATA_FILE, "r") as file:
             for line in file:
-                location, link, latitude, longitude, laptops = line.strip().split(";")
-                data.append({
-                    "location": location,
-                    "link": link,
-                    "coordinates": [float(latitude), float(longitude)],
-                    "laptops": int(laptops),
-                })
+                parts = line.strip().split(";")
+                if len(parts) != 5:
+                    st.error(f"Błędny format danych w pliku: {line.strip()}")
+                    continue
+                location, link, latitude, longitude, laptops = parts
+                try:
+                    data.append({
+                        "location": location,
+                        "link": link,
+                        "coordinates": [float(latitude), float(longitude)],
+                        "laptops": int(laptops),
+                    })
+                except ValueError:
+                    st.error(f"Błędne dane liczbowe w linii: {line.strip()}")
     except FileNotFoundError:
         st.error("Plik data.txt nie został znaleziony!")
     return data
