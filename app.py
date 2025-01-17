@@ -33,7 +33,7 @@ def load_data():
 data = load_data()
 
 # Dodanie logo firmy na górze strony
-st.image("https://github.com/marekkomp/mapa-dostaw/blob/main/image/Bez%20nazwy.png?raw=true", use_column_width=True)  # Zamień "logo.png" na ścieżkę do Twojego pliku z logo
+st.image("https://github.com/marekkomp/mapa-dostaw/blob/main/image/Bez%20nazwy.png?raw=true", use_container_width=True)  # Zamień "logo.png" na ścieżkę do Twojego pliku z logo
 
 # Wspólny tytuł
 st.title("Kompre dziękuje za zaufanie")
