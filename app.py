@@ -33,7 +33,7 @@ data = load_data()
 st.title("Razem możemy więcej")
 
 # Podtytuł
-st.subheader("#Kompre #WsparcieDlaOSP #RazemSilniejsi #KompreDlaOSP #PomagamyRazem #LokalniBohaterowie #WsparcieLokalne")
+st.subheader("#KompreDlaOSP #LokalniBohaterowie")
 
 # Tworzenie mapy
 m = folium.Map(location=[52.0, 19.0], zoom_start=6)
