@@ -33,15 +33,18 @@ def load_data():
 # Wczytaj dane z pliku
 data = load_data()
 
-# Nagłówek strony
-st.title("Razem możemy więcej")
-
-# Podtytuł
-st.subheader("#KompreDlaOSP #LokalniBohaterowie")
-
 # Wybór kategorii
 categories = list(set(entry["category"] for entry in data))
 selected_category = st.selectbox("Wybierz kategorię", ["Wszystkie"] + categories)
+
+# Dynamiczny tytuł
+if selected_category == "Wszystkie":
+    st.title("Razem możemy więcej: Wszystkie lokalizacje")
+else:
+    st.title(f"Razem możemy więcej: {selected_category}")
+
+# Podtytuł
+st.subheader("#KompreDlaOSP #LokalniBohaterowie")
 
 # Filtrowanie danych na podstawie wybranej kategorii
 if selected_category != "Wszystkie":
