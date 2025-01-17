@@ -13,13 +13,16 @@ def load_data():
             for line in file:
                 try:
                     # Wczytanie danych z podziałem na pola
-                    location, url, latitude, longitude, laptops, *image_url = line.strip().split(";")
+                    location, url, latitude, longitude, laptops, *image_url_category = line.strip().split(";")
+                    image_url = image_url_category[0] if len(image_url_category) > 0 else None
+                    category = image_url_category[1] if len(image_url_category) > 1 else None
                     data.append({
                         "location": location,
                         "url": url if url else None,  # Obsługuje brak URL
                         "coordinates": [float(latitude), float(longitude)],
                         "laptops": int(laptops),
-                        "image_url": image_url[0] if image_url else None  # Obsługuje brak zdjęcia
+                        "image_url": image_url if image_url else None,  # Obsługuje brak zdjęcia
+                        "category": category if category else "Nieokreślona"
                     })
                 except ValueError:
                     st.error(f"Błędny format danych w pliku: {line.strip()}")
@@ -36,11 +39,21 @@ st.title("Razem możemy więcej")
 # Podtytuł
 st.subheader("#KompreDlaOSP #LokalniBohaterowie")
 
+# Wybór kategorii
+categories = list(set(entry["category"] for entry in data))
+selected_category = st.selectbox("Wybierz kategorię", ["Wszystkie"] + categories)
+
+# Filtrowanie danych na podstawie wybranej kategorii
+if selected_category != "Wszystkie":
+    filtered_data = [entry for entry in data if entry["category"] == selected_category]
+else:
+    filtered_data = data
+
 # Tworzenie mapy
 m = folium.Map(location=[52.0, 19.0], zoom_start=6)
 
 # Dodanie znaczników na mapie
-for entry in data:
+for entry in filtered_data:
     try:
         # Tworzenie treści popupu
         popup_text = f"<b>{entry['location']}</b>: {entry['laptops']} laptopów"
@@ -63,5 +76,5 @@ st_folium(m, width=700, height=500)
 
 # Statystyki
 st.subheader("Statystyki")
-total_laptops = sum(entry["laptops"] for entry in data)
+total_laptops = sum(entry["laptops"] for entry in filtered_data)
 st.write(f"Łączna liczba dostarczonych laptopów: {total_laptops}")
