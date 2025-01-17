@@ -2,4 +2,4 @@ Warszawa;https://www.facebook.com/komprepl/;52.2297;21.0122;50
 Kraków;https://goo.gl/maps/example2;50.0647;19.945;30
 Łódź;https://goo.gl/maps/example3;51.7592;19.4560;20
 Gdańsk;https://goo.gl/maps/example4;54.3521;18.6466;15
-Gdańsk;https://goo.gl/maps/example4;51.42091778750963, 17.926200264457535;20
+Ostrzeszów;https://goo.gl/maps/example4;51.42091778750963;20
