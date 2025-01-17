@@ -34,7 +34,7 @@ def load_data():
 data = load_data()
 
 # Dynamiczny tytuł
-st.title("Razem możemy więcej")
+st.title("Dziękujemy za zaufanie")
 
 # Wybór kategorii pod tytułem
 categories = list(set(entry["category"] for entry in data))
