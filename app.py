@@ -31,8 +31,17 @@ def load_data():
 # Wczytaj dane z pliku
 data = load_data()
 
-# Dodanie logo firmy na górze strony
-st.image("https://github.com/marekkomp/mapa-dostaw/blob/main/image/Bez%20nazwy.png?raw=true", width=448)  # Zmień "200" na pożądaną szerokość w pikselach
+# Dodanie logo firmy na górze strony z linkiem do strony
+logo_url = "https://raw.githubusercontent.com/marekkomp/mapa-dostaw/main/image/Bez%20nazwy.png"
+redirect_url = "https://www.kompre.pl"
+st.markdown(
+    f"""
+    <a href="{redirect_url}" target="_blank">
+        <img src="{logo_url}" width="448" style="display: block; margin-left: auto; margin-right: auto;"/>
+    </a>
+    """,
+    unsafe_allow_html=True
+)
 
 # Wspólny tytuł
 st.title("Dziękujemy za zaufanie")
